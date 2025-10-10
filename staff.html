@@ -3,144 +3,179 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Staff - SEP Minecraft</title>
-    <meta property="og:title" content="Sep - Staff" />
-  <meta property="og:description" content="Entra y descubre el staff de SEP" />
+  <title>SEP Minecraft</title>
+    <meta property="og:title" content="Sep - Inicio" />
+  <meta property="og:description" content="Entra y descubre todo lo que te preparamos" />
   <meta property="og:image" content="https://cdn.discordapp.com/icons/1323414194019762227/fa2fd94082199f5ce581282ed4253297.png?size=2048" />
   <meta property="og:url" content="https://yalmil.github.io/sep/" />
   <meta property="og:type" content="website">
+  
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #0f0f0f;
-      color: #e0e0e0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
+      background: linear-gradient(135deg, #0a0a0a, #003333, #0a0a0a, #001a1a);
+      background-size: 400% 400%;
+      animation: neonBackground 20s ease infinite;
+      color: #fff;
+      text-align: center;
     }
-
+    @keyframes neonBackground {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     h1 {
       color: #00ffcc;
-      margin-bottom: 30px;
-      text-align: center;
+      font-size: 3rem;
+      margin-top: 2rem;
+      text-shadow: 0 0 15px #00ffcc;
     }
-
-    .staff-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      width: 100%;
-      max-width: 1000px;
-    }
-
-    .staff-card {
-      background: #1a1a1a;
-      border: 2px solid #00ffcc50;
+    .ip-box {
+      background: #111;
+      border: 2px solid #00ffcc;
       border-radius: 15px;
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
+      padding: 1rem;
+      display: inline-block;
+      margin: 1rem auto;
+      box-shadow: 0 0 20px #00ffcc50;
     }
-
-    .staff-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px #00ffccaa;
-    }
-
-    .staff-avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 3px solid #00ffcc;
-      margin-bottom: 15px;
-      object-fit: cover;
-    }
-
-    .staff-name {
-      font-size: 1.3em;
-      color: #ffffff;
-      margin: 5px 0;
-    }
-
-    .staff-role {
+    .ip-box p { margin: 0.5rem 0; }
+    .ip {
       font-weight: bold;
-      color: #00ffcc;
-      margin: 5px 0;
+      font-size: 1.2rem;
+      color: #0ff;
+    }
+    .btn {
+      display: block;
+      background: #111;
+      border: 2px solid #0ff;
+      color: #0ff;
+      padding: 0.8rem 1.5rem;
+      margin: 0.5rem auto;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: 0.2s ease;
+      max-width: 300px;
+    }
+    .btn:hover {
+      background: #0ff;
+      color: #000;
+      box-shadow: 0 0 20px #0ff;
+    }
+    .anuncios {
+      background: #111;
+      border: 2px solid #ff0;
+      box-shadow: 0 0 20px #ff0a;
+      border-radius: 15px;
+      padding: 1rem;
+      margin: 2rem auto;
+      max-width: 90%;
+      text-align: left;
+    }
+    .anuncios h2 {
+      color: #ff0;
+      text-shadow: 0 0 10px #ff0;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .anuncios ul {
+      list-style: none;
+      padding: 0;
+      color: #fff;
+      margin: 0;
+    }
+    .anuncios li {
+      background: #222;
+      border: 1px solid #555;
+      padding: 0.7rem;
+      margin: 0.5rem 0;
+      border-radius: 10px;
+    }
+    .edit-icon {
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: #ff0;
+      text-shadow: 0 0 5px #ff0;
+      transition: 0.3s;
+      user-select: none;
+    }
+    .edit-icon:hover { color: #fff; }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .social-icons a img {
+      height: 48px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+    .social-icons a img:hover {
+      filter: brightness(1.2);
+    }
+    .footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #888;
     }
 
-    .staff-country {
-      font-size: 0.9em;
-      margin: 5px 0;
-      color: #cccccc;
+    /* --- Modal contraseña --- */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
     }
-
-    .staff-description {
-      font-size: 0.95em;
-      color: #aaaaaa;
-      margin-top: 10px;
+    .modal-content {
+      background: #111;
+      padding: 20px;
+      border-radius: 15px;
+      border: 2px solid #0ff;
+      box-shadow: 0 0 15px #0ff;
+      text-align: center;
+      max-width: 300px;
+      width: 90%;
     }
+    .modal input {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #0ff;
+      background: #222;
+      color: #fff;
+    }
+    .modal button {
+      padding: 8px 15px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #0ff;
+      color: #000;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    .modal button:hover { background: #00cccc; }
   </style>
 </head>
 <body>
-  <h1>👥 Staff Oficial - SEP Minecraft</h1>
-
-  <div class="staff-grid">
-    <!-- Derick -->
-    <div class="staff-card">
-      <img class="staff-avatar" src="https://cdn.discordapp.com/avatars/1159569684358758512/cab88ee1666e1f1268e89d93ea24135d.png?size=1024" alt="Derick" />
-      <div class="staff-name">Derick</div>
-      <div class="staff-role">Dev/Owner</div>
-      <div class="staff-country">🇲🇽 / MX</div>
-      <div class="staff-description">Soy alguien buena gente pasivo muy atento a este servidor de discord estudiante de superior me cae bien Casi todos y me gusta programar. (y si, si te voy a despedir ctm)
- 
-      </div>
-    </div>
-
-    <!-- Yalmil -->
-    <div class="staff-card">
-      <img class="staff-avatar" src="https://cdn.discordapp.com/avatars/1282532222305308682/a_20e39bb9d8fbbc28a69e54ab28475634.gif?size=1024" alt="Yalmil" />
-      <div class="staff-name">Yalmil</div>
-      <div class="staff-role">Owner</div>
-      <div class="staff-country">🇵🇪 / PE</div>
-      <div class="staff-description">Ñ (traigan a Saanty para traducirlo que yo no lo hare).</div>
-    </div>
-
-    <!-- Eron2o23 -->
-    <div class="staff-card">
-      <img class="staff-avatar" src="https://cdn.discordapp.com/avatars/1310095645276901399/f682a6371354dbdb94d9b35171d7621a.png?size=2048" alt="Eron2o23" />
-      <div class="staff-name">Eron2o23</div>
-      <div class="staff-role">Fundador</div>
-      <div class="staff-country">🇨🇷 / CR</div>
-      <div class="staff-description">Agradezcan a él de que SEP existe, él creó todo. No sé cómo lo hizo pero es simp desde hace 1 mes.</div>
-    </div>
-    
-    <!-- Lu -->
-    <div class="staff-card">
-      <img class="staff-avatar" src="https://cdn.discordapp.com/avatars/1388394235572781157/6a843b760c515fdc7fea30e2ed81be10.png?size=1024" alt="Lu" />
-      <div class="staff-name">Lu</div>
-      <div class="staff-role">Co-owner</div>
-      <div class="staff-country">🇲🇽 / MX</div>
-      <div class="staff-description">los tickets mi adoración, soy buena onda y ando siempre activa</div>
-
-   <!-- Dear -->
-    <div class="staff-card">
-      <img class="staff-avatar" src="https://cdn.discordapp.com/avatars/936668072150978592/42de698ae87376d11912af6fcac55036.png?size=1024" alt="Dear" />
-      <div class="staff-name">Dear</div>
-      <div class="staff-role">Owner</div>
-      <div class="staff-country">🇲🇽 / MX</div>
-      <div class="staff-description">riqueza 💰,Fama 🏆,Poder 💪Gol D.Roger el rey de los piratas 👑☠️conquistó todo lo que el mundo 🌍 puede ofrecer , sus últimas palabras antes de morir☠️hicieron que la gente corriera 🏃hacia el océano 🌊 quieren mi tesoro 💸 si lo buscan 🧐 pueden quedarse con el busquenlo todo lo que obtuve en este mundo 🌎 lo encontrarán ahí los hombres 🏃se dijeron a la gran ruta maritima para cumplir sus sueños 😴, ahí empezó la gran era de los piratas ☠️🏴‍☠️</div>
-
-         <!-- Byakko -->
-    <div class="staff-card">
-      <img class="staff-avatar" src="https://cdn.discordapp.com/avatars/1251586866709532682/1e6cd0abc637dce52f338b4850bbe6b4.png?size=1024" alt="Byakko" />
-      <div class="staff-name">Byakkp</div>
-      <div class="staff-role">Co-owner</div>
-      <div class="staff-country">🇨🇷 / CR (creo)</div>
-      <div class="staff-description">No se, ahi anda como staff atendiendo tickets cuando no esta dormido [PLACEHOLDER]</div>
-      
-    </div>
-  </div>
+  <h1>Cerrado</h1>
+  <h2>Nada que ver con sep pero puedes ver https://yalmil.pages.dev/</h2>
 </body>
 </html>
+
+
+
+
+
+

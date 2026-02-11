@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <link rel="icon" href="https://cdn.discordapp.com/emojis/1416607460201857168.png?v=1" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- SEO -->
+  <title>PES Discord - Comunidad de Juegos</title>
+  <meta name="description" content="Comunidad de Discord para fans de Minecraft, Roblox, Brawl Stars y Clash Royale. Únete a PES para enterarte de las novedades, eventos y torneos.">
+  
+  <!-- Open Graph (Facebook / Discord) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PES Discord - Comunidad de Juegos">
+  <meta property="og:description" content="Comunidad de Discord para fans de Minecraft, Roblox, Brawl Stars y Clash Royale. Únete a PES para enterarte de las novedades, eventos y torneos.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PES Discord - Comunidad de Juegos">
+  <meta name="twitter:description" content="Comunidad de Discord para fans de Minecraft, Roblox, Brawl Stars y Clash Royale. Únete a PES para enterarte de las novedades, eventos y torneos.">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --primary: #FFD700;
+      --primary-dark: #FFA500;
+      --primary-light: #FFF8DC;
+      --secondary: #FFED4E;
+      --background: #1a1a1a;
+      --surface: #2a2a2a;
+      --surface-light: #3a3a3a;
+      --text: #f5f5f5;
+      --text-secondary: #cccccc;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --border: #FFD700;
+      --shadow: rgba(255, 215, 0, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Header mejorado */
+    header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      padding: 1.5rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23FFD700' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.2;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #333;
+      font-weight: 600;
+      position: relative;
+    }
+
+    /* Botones superiores */
+    .top-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1.5rem 1rem;
+      background-color: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .btn {
+      padding: 0.9rem 1.8rem;
+      border-radius: 50px;
+      border: none;
+      text-decoration: none;
+      color: #000;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 10px var(--shadow);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px var(--shadow);
+    }
+
+    .btn-secondary {
+      background: var(--surface-light);
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-light);
+      color: #000;
+    }
+
+    .btn-discord {
+      background: linear-gradient(to right, #5865F2, #7289da);
+      color: white;
+    }
+
+    /* Contenido principal */
+    main {
+      flex: 1;
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .welcome-container {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      background-color: var(--surface);
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .welcome-container h2 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .welcome-container p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+
+    .user-highlight {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Grid de juegos mejorado con miniaturas */
+    .games-container {
+      width: 100%;
+    }
+
+    .section-title {
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title i {
+      color: var(--primary);
+    }
+
+    .game-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .game-card {
+      background-color: var(--surface);
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .game-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px var(--shadow);
+      border-color: var(--secondary);
+    }
+
+    .game-thumbnail {
+      height: 160px;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .game-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: var(--primary);
+      color: #000;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .new-badge {
+      background-color: var(--warning);
+      color: white;
+    }
+
+    .game-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .game-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .game-description {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .game-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .game-icon {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .game-play-btn {
+      background-color: var(--primary);
+      color: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .game-play-btn:hover {
+      background-color: var(--secondary);
+    }
+
+    /* Novedades */
+    .news-container {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background-color: var(--surface);
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .news-item {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--surface-light);
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .news-date {
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .news-title {
+      color: var(--text);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .news-content {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* Estadísticas */
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background-color: var(--surface);
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Footer mejorado */
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+      background-color: var(--surface);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .social-link {
+      color: var(--text-secondary);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--surface-light);
+    }
+
+    .social-link:hover {
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .social-link.discord:hover {
+      background-color: #5865F2;
+    }
+
+    .social-link.twitter:hover {
+      background-color: #1DA1F2;
+    }
+
+    .social-link.youtube:hover {
+      background-color: #FF0000;
+    }
+
+    .social-link.twitch:hover {
+      background-color: #9146FF;
+    }
+
+    .copyright {
+      color: var(--text-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .game-list {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+      
+      .top-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .social-links {
+        gap: 1rem;
+      }
+      
+      .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .game-list {
+        grid-template-columns: 1fr;
+      }
+      
+      .welcome-container h2 {
+        font-size: 1.5rem;
+      }
+      
+      .section-title {
+        font-size: 1.3rem;
+      }
+      
+      .social-links {
+        gap: 0.8rem;
+      }
+      
+      .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Estilos para tema claro */
+    body.light-theme {
+      --background: #FFF8DC;
+      --surface: #ffffff;
+      --surface-light: #f5f5f5;
+      --text: #333333;
+      --text-secondary: #666666;
+      --border: #FFD700;
+      --shadow: rgba(255, 215, 0, 0.1);
+    }
+    
+    body.light-theme .game-card {
+      border: 1px solid #FFD700;
+    }
+    
+    body.light-theme .welcome-container,
+    body.light-theme .stats-container,
+    body.light-theme .news-container {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    body.light-theme header {
+      background: linear-gradient(135deg, #FFA500, #FFD700);
+    }
+    
+    body.light-theme footer {
+      background-color: var(--surface-light);
+    }
+    
+    body.light-theme .social-link {
+      background-color: #f5f5f5;
+      color: #666666;
+    }
+    
+    body.light-theme .social-link:hover {
+      color: white;
+    }
+    
+    body.light-theme .game-play-btn {
+      color: #000;
+    }
+    
+    body.light-theme .btn-secondary {
+      color: #FFA500;
+    }
+    
+    body.light-theme .btn-secondary:hover {
+      color: #000;
+    }
+    
+    body.light-theme .btn-discord {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1><i class="fas fa-gamepad"></i> PES Discord Server</h1>
+    <p class="subtitle">Comunidad de Minecraft, Roblox, Brawl Stars y Clash Royale</p>
+  </header>
+
+  <div class="top-buttons">
+    <a class="btn btn-discord" href="#" id="discord-invite">
+      <i class="fab fa-discord"></i> Únete al Discord
+    </a>
+    <a class="btn" href="#news">
+      <i class="fas fa-newspaper"></i> Novedades
+    </a>
+  </div>
+
+  <main>
+    <div class="welcome-container">
+      <h2 id="welcome">¡Bienvenido a PES!</h2>
+      <p>Si estás interesado en: <span class="user-highlight">Minecraft</span>, <span class="user-highlight">Roblox</span>, <span class="user-highlight">Brawl Stars</span> o <span class="user-highlight">Clash Royale</span>, ¡no dudes en unirte a nuestra comunidad!</p>
+      <p style="margin-top: 1rem;">Entérate de las novedades, participa en eventos y conoce a otros jugadores.</p>
+    </div>
+
+    <div class="games-container">
+      <h2 class="section-title"><i class="fas fa-gamepad"></i> Juegos de la Comunidad</h2>
+      
+      <div class="game-list" id="games-container">
+      </div>
+    </div>
+
+    <div class="news-container" id="news">
+      <h2 class="section-title"><i class="fas fa-newspaper"></i> Últimas Novedades</h2>
+      
+      <div class="news-list" id="news-container">
+      </div>
+    </div>
+
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-value" id="total-members">90+</div>
+        <div class="stat-label">Miembros</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="games-count">4</div>
+        <div class="stat-label">Juegos Principales</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">24/7</div>
+        <div class="stat-label">Comunidad Activa</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://discord.gg/WfZuPNamBG" class="social-link discord" id="footer-discord" title="Discord">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="https://x.com/pescaosmc" class="social-link twitter" id="footer-twitter" title="Twitter/X">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.youtube.com/channel/UCb9oL0a1GEG_HkOhXhTvlzA" class="social-link youtube" id="footer-youtube" title="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        </a>
+      </div>
+      <div class="copyright">&copy; 2025-2026 PES Discord Server</div>
+    </div>
+  </footer>
+
+  <script>
+    const gamesData = [
+      {
+        id: 1,
+        title: "Minecraft",
+        description: "Construye, explora y sobrevive en un mundo infinito. Únete a nuestro servidor y participa en eventos especiales.",
+        icon: "",
+        url: "#",
+        thumbnail: "https://store-images.s-microsoft.com/image/apps.58378.13850085746326678.826cc014-d610-46af-bdb3-c5c96be4d22c.64287a91-c69e-4723-bb61-03fecd348c2a?q=90&w=480&h=270",
+        category: "supervivencia",
+        isNew: false
+      },
+      {
+        id: 2,
+        title: "Roblox",
+        description: "Crea tus propios juegos o juega miles de experiencias creadas por la comunidad. Comparte tus creaciones con nosotros.",
+        icon: "",
+        url: "#",
+        thumbnail: "https://cms-media.roblox.com/resize=width:1280,fit:max/GnaqqRBTcCuoRELL938w",
+        isNew: false
+      },
+      {
+        id: 3,
+        title: "Brawl Stars",
+        description: "Participa en torneos, forma equipos y mejora tus habilidades en este divertido juego de Supercell.",
+        icon: "",
+        url: "#",
+        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSceLjutjSk1dBTjZ1n4_v_SNrdOm6-wO-eA&s",
+        category: "acción",
+        isNew: false
+      },
+      {
+        id: 4,
+        title: "Clash Royale",
+        description: "Desafía a otros jugadores en duelos estratégicos. Comparte tus mazos y estrategias con la comunidad.",
+        icon: "",
+        url: "#",
+        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQcNgYo-zhboAhK8A1-OvmaG-Bmfdr9XNpdw&s",
+        category: "estrategia",
+        isNew: true
+      }
+    ];
+
+    // Datos de noticias
+    const newsData = [
+      {
+        id: 1,
+        date: "Fesha",
+        title: "Testeo",
+        content: "test"
+      },
+      {
+        id: 2,
+        date: "pacman",
+        title: "shhhhdhfhghht8u rnme",
+        content: "Rename"
+      }
+    ];
+    const discordInviteLink = "https://discord.gg/WfZuPNamBG";
+    
+    // Cargar juegos
+    function loadGames() {
+      const gamesContainer = document.getElementById('games-container');
+      gamesContainer.innerHTML = '';
+      
+      gamesData.forEach(game => {
+        const gameCard = document.createElement('div');
+        gameCard.className = 'game-card';
+        
+        gameCard.innerHTML = `
+          <div class="game-thumbnail" style="background-image: url('${game.thumbnail}')">
+          </div>
+          <div class="game-content">
+            <h3 class="game-title">${game.title} ${game.icon}</h3>
+            <p class="game-description">${game.description}</p>
+            <div class="game-footer">
+              <div class="game-icon">${game.icon}</div>
+            </div>
+          </div>
+        `;
+        
+        gamesContainer.appendChild(gameCard);
+      });
+    }
+    
+    // Cargar noticias dinámicamente
+    function loadNews() {
+      const newsContainer = document.getElementById('news-container');
+      newsContainer.innerHTML = '';
+      
+      newsData.forEach(news => {
+        const newsItem = document.createElement('div');
+        newsItem.className = 'news-item';
+        
+        newsItem.innerHTML = `
+          <div class="news-date">${news.date}</div>
+          <h3 class="news-title">${news.title}</h3>
+          <p class="news-content">${news.content}</p>
+        `;
+        
+        newsContainer.appendChild(newsItem);
+      });
+    }
+    
+    // Cambiar entre temas claro/oscuro
+    function setupThemeToggle() {
+      const themeToggle = document.getElementById('theme-toggle');
+      const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+      
+      // Verificar tema guardado o preferencia del sistema
+      const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+      
+      // Aplicar tema guardado
+      if (currentTheme === 'light') {
+        document.body.classList.add('light-theme');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i> Tema Oscuro';
+      } else {
+        document.body.classList.remove('light-theme');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i> Tema Claro';
+      }
+      
+      // Configurar evento para cambiar tema
+      themeToggle.addEventListener('click', function() {
+        if (document.body.classList.contains('light-theme')) {
+          // Cambiar a tema oscuro
+          document.body.classList.remove('light-theme');
+          localStorage.setItem('theme', 'dark');
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i> Tema Claro';
+        } else {
+          // Cambiar a tema claro
+          document.body.classList.add('light-theme');
+          localStorage.setItem('theme', 'light');
+          themeToggle.innerHTML = '<i class="fas fa-moon"></i> Tema Oscuro';
+        }
+      });
+    }
+    
+    // Configurar enlaces de Discord
+    function setupDiscordLinks() {
+      const discordLinks = document.querySelectorAll('#discord-invite, #footer-discord');
+      
+      discordLinks.forEach(link => {
+        link.href = discordInviteLink;
+        link.target = '_blank';
+        
+        link.addEventListener('click', function(e) {
+          if (discordInviteLink === "https://discord.gg/example") {
+            e.preventDefault();
+            alert("¡Por favor, reemplaza 'discordInviteLink' en el código JavaScript con tu enlace de invitación real!");
+          }
+        });
+      });
+    }
+    
+    // Configurar enlaces de redes sociales
+    function setupSocialLinks() {
+      // Estos son ejemplos, reemplaza con tus enlaces reales
+      document.getElementById('footer-twitter').href = '#';
+      document.getElementById('footer-youtube').href = '#';
+      
+      // Añadir eventos a botones de "Más información"
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('game-play-btn')) {
+          const gameName = e.target.getAttribute('data-game');
+          alert(`Información sobre ${gameName}: ¡Únete a nuestro Discord para más detalles, eventos y comunidad!`);
+        }
+      });
+    }
+    
+    // Detectar si el usuario prefiere tema claro por defecto
+    function detectSystemTheme() {
+      const prefersLightScheme = window.matchMedia('(prefers-color-scheme: light)');
+      
+      // Si no hay tema guardado y el sistema prefiere tema claro, aplicarlo
+      if (!localStorage.getItem('theme') && prefersLightScheme.matches) {
+        document.body.classList.add('light-theme');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fas fa-moon"></i> Tema Oscuro';
+      }
+    }
+    
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function() {
+      loadGames();
+      loadNews();
+      setupThemeToggle();
+      setupDiscordLinks();
+      setupSocialLinks();
+      detectSystemTheme();
+      
+      // Animación para el contador de miembros
+      const memberCount = document.getElementById('total-members');
+      let count = 120;
+      const target = 150;
+      const interval = setInterval(() => {
+        count += 5;
+        memberCount.textContent = count + "+";
+        
+        if (count >= target) {
+          clearInterval(interval);
+          memberCount.textContent = target + "+";
+        }
+      }, 100);
+    });
+  </script>
+</body>
+</html>
